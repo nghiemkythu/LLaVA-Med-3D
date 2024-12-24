@@ -1,0 +1,1 @@
+srun -p A100-IML --time=2-00:00 --ntasks 1 --gpus-per-task 4 --cpus-per-gpu=2 --mem-per-cpu 32G --container-image=/netscratch/duynguyen/Research/bao_llava_med/bao_llava_med.sqsh --container-workdir="/netscratch/duynguyen/Research/bao_llava_med/Dense"   --container-mounts=/netscratch/duynguyen:/netscratch/duynguyen,/netscratch/software:/netscratch/software:ro bash finetune_3D.sh

@@ -1,0 +1,6 @@
+peft
+shortuuid
+nltk
+pycocoevalcap
+pymeteor
+nose
