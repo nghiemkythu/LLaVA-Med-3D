@@ -11,3 +11,9 @@
 ```Shell
 bash inference_3D.sh
 ```
+
+### Code Details:
+
+- To process a list of images (slices) for each question-answer, I load, preprocess, and store a tensor including all preprocessed slices for each QA in file llava/train/train.py, from line 720-777 for training,
+and in llava/eval/model_vqa.py, from line 65-75 for inference. The class DataCollatorForSupervisedDataset in llava/train/train.py also help load data as batch.
+- To combine list of preprocessed slices into language (QA), looking at file llava/model/llava_arch.py, from line 198-386 (function named prepare_inputs_labels_for_multimodal).
