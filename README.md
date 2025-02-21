@@ -9,7 +9,7 @@
 - If choosing to load weight llava-med 1.5 and directly train on instruction-tuning dataset (stage 2), run script finetune_3D_only_stage2.sh
 
 ## 2. MedFlamingo-3D: We modify MedFlamingo to make it work for 3D volume input.
-First of all, please checkout branch openflamingo
+First of all, please checkout branch medflamingo
 ### Install trainind environment similarly with Open-flamingo:
 ```
 conda env create -f environment.yml
