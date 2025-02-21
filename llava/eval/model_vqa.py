@@ -62,11 +62,17 @@ def eval_model(args):
         prompt = conv.get_prompt()
 
         input_ids = tokenizer_image_token(prompt, tokenizer, IMAGE_TOKEN_INDEX, return_tensors='pt').unsqueeze(0).cuda()
-
-        image = Image.open(os.path.join(args.image_folder, image_file)).convert('RGB')
-        #print(image_processor)
-        #print(image)
-        image_tensor = process_images([image], image_processor, model.config)[0]
+        if type(image_file) is list:
+            image_list = []
+            for img_file in image_file:
+                image = Image.open(os.path.join(args.image_folder, img_file)).convert('RGB')
+                image_list.append(image)
+            image_tensor = process_images(image_list, image_processor, model.config)
+        else:
+            image = Image.open(os.path.join(args.image_folder, image_file)).convert('RGB')
+            #print(image_processor)
+            #print(image)
+            image_tensor = process_images([image], image_processor, model.config)[0]
 
         with torch.inference_mode():
             output_ids = model.generate(
