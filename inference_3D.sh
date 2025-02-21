@@ -1,7 +1,7 @@
 
 DATASET="VLM_ADNI_DATA"
 NOTE=original_LLaVA-Med_new
-NOTE_OUTPUT="_pre-train_stage_1_3D_mlp" # lora: with adapter again, non: no adapter.
+NOTE_OUTPUT="_pre-train_stage_2_3D_mlp" # lora: with adapter again, non: no adapter.
 DATASET_LINK="/netscratch/duynguyen/Research/bao_llava_med/Dense/dataset_3D/$DATASET"
 
 MODEL_NAME="/netscratch/duynguyen/Research/LLaVA-Med/weights_full/checkpoint_llava_med_instruct_60k_inline_mention_version_1-5"
@@ -15,8 +15,8 @@ STEP=4
 
 python3 llava/eval/model_vqa.py \
 	--model-path weights/llava_$DATASET-$EPOCH-epo$NOTE$NOTE_OUTPUT \
-	--question-file $IMAGE_FOLDER/$DATASET/test_fix_brief.json  \
-	--image-folder $IMAGE_FOLDER/$DATASET/${DATASET}_images \
-	--answers-file results/captioning/${DATASET}$NOTE.jsonl \
+	--question-file $DATASET_LINK/AD_caption-llava_3D_version.json  \
+	--image-folder $DATASET_LINK/vbm_images \
+	--answers-file results/${DATASET}$NOTE.jsonl \
 	--conv-mode llava_llama_2 \
 	--temperature 0.1 
