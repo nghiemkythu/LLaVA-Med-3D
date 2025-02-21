@@ -9,5 +9,5 @@
 
 ### To inference the model, firstly you format the question.json as .json file you use to train the model and change paths (data, weight) in inference.sh file. Then, run:
 ```Shell
-bash inference.sh
+bash inference_3D.sh
 ```
